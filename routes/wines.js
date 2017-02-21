@@ -32,7 +32,9 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     db.collection('wines', function(err, collection) {
         collection.find().toArray(function(err, items) {
-            res.send(items);
+          res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+          res.send(items);
         });
     });
 };
